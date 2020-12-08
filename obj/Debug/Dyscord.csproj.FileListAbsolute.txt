@@ -41,3 +41,17 @@ C:\Users\Phillip\Desktop\jailynreese\tigermingle\obj\Debug\Dyscord.csproj.Genera
 C:\Users\Phillip\Desktop\jailynreese\tigermingle\obj\Debug\Dyscord.csproj.CoreCompileInputs.cache
 C:\Users\Phillip\Desktop\jailynreese\tigermingle\obj\Debug\Dyscord.exe
 C:\Users\Phillip\Desktop\jailynreese\tigermingle\obj\Debug\Dyscord.pdb
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.csprojAssemblyReference.cache
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.SettingsForm.resources
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.DysordForm.resources
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.PhraseForm.resources
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.HangmanForm.resources
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.Form8.resources
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.Properties.Resources.resources
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.csproj.GenerateResource.cache
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.csproj.CoreCompileInputs.cache
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.exe
+Z:\IGMProfile\Documents\tigermingle\obj\Debug\Dyscord.pdb
+Z:\IGMProfile\Documents\tigermingle\bin\Debug\Dyscord.exe.config
+Z:\IGMProfile\Documents\tigermingle\bin\Debug\Dyscord.exe
+Z:\IGMProfile\Documents\tigermingle\bin\Debug\Dyscord.pdb

@@ -28,12 +28,12 @@ namespace Dyscord
 
         //used to see if guesser won and got all letters
         public int score;
-        public HangmanForm(Form startGameForm)
+        public HangmanForm(PhraseForm startGameForm, DysordForm dysordForm)
         {
             InitializeComponent();
 
 
-            this.Owner = startGameForm;
+            this.Owner = dysordForm;
             this.answerString = startGameForm.answer.ToLower();
             this.lives = 6;
 
@@ -510,8 +510,8 @@ namespace Dyscord
             pictureBox1.Load("https://people.rit.edu/~jrt5717/hangman/1.jpg");
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            IPAddress iPAddress = IPAddress.Parse(Owner.targetIp);
-            IPEndPoint remoteEndPoint = new IPEndPoint(iPAddress, Owner.targetPort);
+            IPAddress iPAddress = IPAddress.Parse(((DysordForm)this.Owner).targetIp);
+            IPEndPoint remoteEndPoint = new IPEndPoint(iPAddress, ((DysordForm)this.Owner).targetPort);
 
             Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             server.Connect(remoteEndPoint);

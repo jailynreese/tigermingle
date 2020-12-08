@@ -64,8 +64,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.webBrowser1);
             this.groupBox1.Controls.Add(this.convRichTextBox);
+            this.groupBox1.Controls.Add(this.webBrowser1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -85,6 +85,7 @@
             // 
             // convRichTextBox
             // 
+            this.convRichTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.convRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.convRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.convRichTextBox.Name = "convRichTextBox";
@@ -105,6 +106,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.splitContainer1.Panel2.Controls.Add(this.exitButton);
             this.splitContainer1.Panel2.Controls.Add(this.loginButton);
             this.splitContainer1.Panel2.Controls.Add(this.sendButton);
@@ -115,6 +117,7 @@
             // 
             // msgRichTextBox
             // 
+            this.msgRichTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.msgRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.msgRichTextBox.Location = new System.Drawing.Point(0, 0);
             this.msgRichTextBox.Name = "msgRichTextBox";
@@ -188,6 +191,7 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.splitContainer3.Panel2.Controls.Add(this.battleShipsButton);
             this.splitContainer3.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer3.Panel2.Controls.Add(this.label1);
@@ -212,7 +216,7 @@
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(17, 59);
+            this.statusStrip1.Location = new System.Drawing.Point(46, 53);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(119, 22);
             this.statusStrip1.TabIndex = 10;
@@ -242,7 +246,7 @@
             this.questions20Button.Name = "questions20Button";
             this.questions20Button.Size = new System.Drawing.Size(106, 23);
             this.questions20Button.TabIndex = 6;
-            this.questions20Button.Text = "20 Questions";
+            this.questions20Button.Text = "Hangman";
             this.questions20Button.UseVisualStyleBackColor = true;
             // 
             // ticTacToeButton

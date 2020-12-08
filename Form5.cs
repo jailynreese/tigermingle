@@ -39,7 +39,7 @@ namespace Dyscord
             Stream netStream = new NetworkStream(server);
             StreamWriter writer = new StreamWriter(netStream);
 
-            HangmanForm hangman = new HangmanForm(this);
+            HangmanForm hangman = new HangmanForm(this, (DysordForm)this.Owner);
 
             writer.Write(hangman);
 
