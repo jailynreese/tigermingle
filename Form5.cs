@@ -21,6 +21,7 @@ namespace Dyscord
         public PhraseForm(Form owner)
         {
             InitializeComponent();
+
             this.Owner = owner;
             this.CenterToParent();
             this.targetIp = Owner.targetIp;

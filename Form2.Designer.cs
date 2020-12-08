@@ -39,10 +39,11 @@
             this.userTextBox = new System.Windows.Forms.TextBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.battleShipsButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label1 = new System.Windows.Forms.Label();
             this.questions20Button = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ticTacToeButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
@@ -188,14 +189,25 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.battleShipsButton);
             this.splitContainer3.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer3.Panel2.Controls.Add(this.label1);
             this.splitContainer3.Panel2.Controls.Add(this.questions20Button);
-            this.splitContainer3.Panel2.Controls.Add(this.button3);
+            this.splitContainer3.Panel2.Controls.Add(this.ticTacToeButton);
             this.splitContainer3.Panel2.Controls.Add(this.button2);
             this.splitContainer3.Size = new System.Drawing.Size(800, 450);
             this.splitContainer3.SplitterDistance = 562;
             this.splitContainer3.TabIndex = 2;
+            // 
+            // battleShipsButton
+            // 
+            this.battleShipsButton.Enabled = false;
+            this.battleShipsButton.Location = new System.Drawing.Point(90, 272);
+            this.battleShipsButton.Name = "battleShipsButton";
+            this.battleShipsButton.Size = new System.Drawing.Size(75, 23);
+            this.battleShipsButton.TabIndex = 11;
+            this.battleShipsButton.Text = "BattleShips";
+            this.battleShipsButton.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
@@ -221,22 +233,22 @@
             // questions20Button
             // 
             this.questions20Button.Enabled = false;
-            this.questions20Button.Location = new System.Drawing.Point(90, 324);
+            this.questions20Button.Location = new System.Drawing.Point(90, 317);
             this.questions20Button.Name = "questions20Button";
             this.questions20Button.Size = new System.Drawing.Size(106, 23);
             this.questions20Button.TabIndex = 6;
             this.questions20Button.Text = "20 Questions";
             this.questions20Button.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // ticTacToeButton
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(90, 196);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Tic Tac Toe";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ticTacToeButton.Enabled = false;
+            this.ticTacToeButton.Location = new System.Drawing.Point(90, 226);
+            this.ticTacToeButton.Name = "ticTacToeButton";
+            this.ticTacToeButton.Size = new System.Drawing.Size(75, 23);
+            this.ticTacToeButton.TabIndex = 8;
+            this.ticTacToeButton.Text = "Tic Tac Toe";
+            this.ticTacToeButton.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -260,6 +272,7 @@
             // 
             // toolStripProgressBar1
             // 
+            this.toolStripProgressBar1.Maximum = 20;
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
             this.toolStripProgressBar1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical270;
@@ -310,9 +323,10 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button questions20Button;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ticTacToeButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.WebBrowser webBrowser2;
+        private System.Windows.Forms.Button battleShipsButton;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
     }
 }

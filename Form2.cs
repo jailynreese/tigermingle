@@ -102,7 +102,6 @@ namespace Dyscord
 
                 msgRichTextBox.Clear();
             }
-
         }
 
         private void ExitButton__Click(object sender, EventArgs e)
@@ -170,7 +169,6 @@ namespace Dyscord
                 reader.Close();
                 netStream.Close();
                 client.Close();
-
             }
 
         }
@@ -178,18 +176,16 @@ namespace Dyscord
         private void UpdateConversation(string text)
         {
             this.convRichTextBox.Text += text + '\n';
-            //this.toolStripProgressBar1.Value += 1;
+            this.toolStripProgressBar1.Value++;
+            if (this.toolStripProgressBar1.Value >= 5) this.questions20Button.Enabled = true;
+            if (this.toolStripProgressBar1.Value >= 10) this.ticTacToeButton.Enabled = true;
+            if (this.toolStripProgressBar1.Value >= 15) this.battleShipsButton.Enabled = true;
         }
 
 
         private void questions20button__Click(object sender, EventArgs e)
         {
             PhraseForm phraseForm = new PhraseForm(this);
-        }
-
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
