@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,14 +16,13 @@ namespace Dyscord
 {
     public partial class PhraseForm : Form
     {
-        public String answer = "";
+        public string answer = "";
         public PhraseForm(Form owner)
         {
             InitializeComponent();
 
             this.Owner = owner;
             this.CenterToParent();
-
 
             this.sendButton.Click += new EventHandler(SendButton__Click);
         }

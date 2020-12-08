@@ -15,10 +15,10 @@ namespace Battleships
         public Button[,] board;
         public class Ship
         {
-            public Ship(string Name, int Size)
+            public Ship(string name, int size)
             {
-                this.ShipName = Name;
-                this.Size = Size;
+                this.ShipName = name;
+                this.Size = size;
             }
             private string name;
             public string ShipName
@@ -30,21 +30,29 @@ namespace Battleships
             public int Size
             {
                 get { return size; }
-                set { Size = value; }
+                set { size = value; }
             }
         }
 
         public Ship selectedShip = null;
         public Ship[] ships;
-        
+        bool orientIsHorizontal = true;
+
         public Form1()
         {
             InitializeComponent();
 
+            flipOrientButton.Click += new EventHandler(FlipOrientation);
             CreateButtons();
             CreateShips();
-            //selectingShip();
+            selectingShip();
         }
+
+        private void FlipOrientation(object sender, EventArgs e)
+        {
+            orientIsHorizontal = !orientIsHorizontal;
+        }
+
 
         private void CreateButtons()
         {
@@ -75,12 +83,12 @@ namespace Battleships
         {
             ships = new Ship[5];
             //playerLogRichTextBox.Text = ships.ToString();
-            /*
-            ships[0] = new Ship(carrierButton.Text, 5);
+            
+            ships[0] = new Ship(this.carrierButton.Text, 5);
             ships[1] = new Ship(battleShipButton.Text, 4);
             ships[2] = new Ship(destroyerButton.Text, 3);
             ships[3] = new Ship(submarineButton.Text, 3);
-            ships[4] = new Ship(patrolBoatButton.Text, 2);*/
+            ships[4] = new Ship(patrolBoatButton.Text, 2);
         }
 
         private void Tile__Click(object sender, EventArgs e)
@@ -94,26 +102,12 @@ namespace Battleships
         private void Tile__MouseEnter(object sender, EventArgs e)
         {
             Button butt = (Button)sender;
-
-            int x = (butt.Location.X - 150) / 50;
-            int y = (butt.Location.Y - 10) / 50;
-            playerLogRichTextBox.Text += x.ToString() + ":" + y.ToString() + " | ";
-
-            //playerLogRichTextBox.Text += "\nSelected: " + butt.Text;
-            if (selectedShip == null)
+            if (selectedShip != null)
             {
-                butt.BackColor = System.Drawing.Color.LightBlue;
-                for (int i = 0; i < 3; i++)
+                Button[] place = placingShip(butt);
+                foreach (Button i in place)
                 {
-                    try
-                    {
-                        board[x + i, y].BackColor = System.Drawing.Color.LightBlue;
-
-                    }
-                    catch
-                    {
-
-                    }
+                    i.BackColor = Color.LightBlue;
                 }
             }
             else
@@ -126,7 +120,48 @@ namespace Battleships
         {
             Button butt = (Button)sender;
 
-            butt.BackColor = System.Drawing.Color.White;
+            if (selectedShip != null)
+            {
+                Button[] place = placingShip(butt);
+                foreach (Button i in place)
+                {
+                    i.BackColor = Color.White;
+                }
+            }
+            else
+            {
+                butt.BackColor = System.Drawing.Color.White;
+            }
+        }
+
+        private Button[] placingShip(Button butt)
+        {
+            int size = selectedShip.Size;
+            Button[] place = new Button[size];
+
+            int x = (butt.Location.X - 150) / 50;
+            int y = (butt.Location.Y - 10) / 50;
+            playerLogRichTextBox.Text += x.ToString() + ":" + y.ToString() + " | ";
+
+            for (int i = 0; i < size; i++)
+            {
+                try
+                {
+                    if (orientIsHorizontal == true) place[i] = board[x + i, y];
+                    else if (orientIsHorizontal == false) place[i] = board[x, y + i];
+                }
+                catch
+                {
+                    int newLength = 0;
+                    if (i == size - 1) newLength = -1;
+                    else newLength = i - size;
+
+                    if (orientIsHorizontal == true) place[i] = board[x + newLength, y];
+                    else if (orientIsHorizontal == false) place[i] = board[x, y + newLength];
+                }
+            }
+
+            return place;
         }
 
         private void selectingShip()
@@ -141,7 +176,7 @@ namespace Battleships
         private void ShipSelect(object sender, EventArgs e)
         {
             Button shipButt = (Button)sender;
-            /*
+            
             selectedShip = null;
             
             foreach (Ship i in ships)
@@ -150,20 +185,20 @@ namespace Battleships
                 {
                     selectedShip = i;
                 }
-            }*/
+            }
 
-            if (shipButt.Name == carrierButton.Name) carrierButton.Enabled = false;
+            if (selectedShip.ShipName == carrierButton.Text) carrierButton.Enabled = false;
             else carrierButton.Enabled = true;
-            if (shipButt.Name == battleShipButton.Name) battleShipButton.Enabled = false;
+            if (selectedShip.ShipName == battleShipButton.Text) battleShipButton.Enabled = false;
             else battleShipButton.Enabled = true;
-            if (shipButt.Name == destroyerButton.Name) destroyerButton.Enabled = false;
+            if (selectedShip.ShipName == destroyerButton.Text) destroyerButton.Enabled = false;
             else destroyerButton.Enabled = true;
-            if (shipButt.Name == submarineButton.Name) submarineButton.Enabled = false;
+            if (selectedShip.ShipName == submarineButton.Text) submarineButton.Enabled = false;
             else submarineButton.Enabled = true;
-            if (shipButt.Name == patrolBoatButton.Name) patrolBoatButton.Enabled = false;
+            if (selectedShip.ShipName == patrolBoatButton.Text) patrolBoatButton.Enabled = false;
             else patrolBoatButton.Enabled = true;
 
-            playerLogRichTextBox.Text += "Selected: " +  shipButt.Text + "\n";
+            playerLogRichTextBox.Text += "Selected: " +  selectedShip.ShipName + "\n";
         }
     }
 }

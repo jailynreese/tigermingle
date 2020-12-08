@@ -32,6 +32,7 @@ namespace Dyscord
         {
             InitializeComponent();
 
+
             this.Owner = startGameForm;
             this.answerString = startGameForm.answer.ToLower();
             this.lives = 6;

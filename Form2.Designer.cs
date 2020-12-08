@@ -41,12 +41,11 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.battleShipsButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.questions20Button = new System.Windows.Forms.Button();
             this.ticTacToeButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -194,7 +193,6 @@
             this.splitContainer3.Panel2.Controls.Add(this.label1);
             this.splitContainer3.Panel2.Controls.Add(this.questions20Button);
             this.splitContainer3.Panel2.Controls.Add(this.ticTacToeButton);
-            this.splitContainer3.Panel2.Controls.Add(this.button2);
             this.splitContainer3.Size = new System.Drawing.Size(800, 450);
             this.splitContainer3.SplitterDistance = 562;
             this.splitContainer3.TabIndex = 2;
@@ -216,10 +214,17 @@
             this.toolStripProgressBar1});
             this.statusStrip1.Location = new System.Drawing.Point(17, 59);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(150, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(119, 22);
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical270;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Maximum = 20;
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.toolStripProgressBar1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical270;
             // 
             // label1
             // 
@@ -250,16 +255,6 @@
             this.ticTacToeButton.Text = "Tic Tac Toe";
             this.ticTacToeButton.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(90, 59);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Connect 4";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // webBrowser2
             // 
             this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -269,13 +264,6 @@
             this.webBrowser2.Size = new System.Drawing.Size(800, 450);
             this.webBrowser2.TabIndex = 3;
             this.webBrowser2.Visible = false;
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Maximum = 20;
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            this.toolStripProgressBar1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical270;
             // 
             // DysordForm
             // 
@@ -324,7 +312,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button questions20Button;
         private System.Windows.Forms.Button ticTacToeButton;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.WebBrowser webBrowser2;
         private System.Windows.Forms.Button battleShipsButton;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;

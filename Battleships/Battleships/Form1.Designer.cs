@@ -35,6 +35,7 @@ namespace Battleships
             this.submarineButton = new System.Windows.Forms.Button();
             this.patrolBoatButton = new System.Windows.Forms.Button();
             this.playerLogRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.flipOrientButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // carrierButton
@@ -95,12 +96,23 @@ namespace Battleships
             this.playerLogRichTextBox.TabIndex = 5;
             this.playerLogRichTextBox.Text = "";
             // 
+            // flipOrientButton
+            // 
+            this.flipOrientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flipOrientButton.Location = new System.Drawing.Point(12, 12);
+            this.flipOrientButton.Name = "flipOrientButton";
+            this.flipOrientButton.Size = new System.Drawing.Size(100, 30);
+            this.flipOrientButton.TabIndex = 6;
+            this.flipOrientButton.Text = "Flip";
+            this.flipOrientButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(800, 598);
+            this.Controls.Add(this.flipOrientButton);
             this.Controls.Add(this.playerLogRichTextBox);
             this.Controls.Add(this.patrolBoatButton);
             this.Controls.Add(this.submarineButton);
@@ -121,6 +133,7 @@ namespace Battleships
         private System.Windows.Forms.Button submarineButton;
         private System.Windows.Forms.Button patrolBoatButton;
         private System.Windows.Forms.RichTextBox playerLogRichTextBox;
+        private System.Windows.Forms.Button flipOrientButton;
     }
 }
 

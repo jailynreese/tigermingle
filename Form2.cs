@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -176,6 +175,7 @@ namespace Dyscord
         private void UpdateConversation(string text)
         {
             this.convRichTextBox.Text += text + '\n';
+
             this.toolStripProgressBar1.Value++;
             if (this.toolStripProgressBar1.Value >= 5) this.questions20Button.Enabled = true;
             if (this.toolStripProgressBar1.Value >= 10) this.ticTacToeButton.Enabled = true;
