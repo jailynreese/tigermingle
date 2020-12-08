@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,193 +13,212 @@ namespace Battleships
 {
     public partial class Form1 : Form
     {
-        public Button[,] board;
-        public class Ship
+
+        public class Player
         {
-            public Ship(string name, int size)
+            public Player(string playerName, Board board)
             {
-                this.ShipName = name;
-                this.Size = size;
+                this.Name = playerName;
+                this.Board = board;
             }
+
             private string name;
-            public string ShipName
+            public string Name
             {
                 get { return name; }
                 set { name = value; }
             }
-            private int size;
-            public int Size
-            {
-                get { return size; }
-                set { size = value; }
-            }
-        }
 
-        public Ship selectedShip = null;
-        public Ship[] ships;
-        bool orientIsHorizontal = true;
+            private Board board;
+            public Board Board
+            {
+                get { return board; }
+                set { board = value; }
+            }
+            private Ship[] ships;
+            public Ship[] Ships
+            {
+                get { return ships; }
+                set { ships = value; }
+            }
+            public bool ready = false;
+            public int point = 0;
+            public Button[] shots = new Button[36];
+        }
+        Thread Start;
+
+        Player player1;
+        Player player2;
+
+        public bool ready = false;
 
         public Form1()
         {
             InitializeComponent();
 
-            flipOrientButton.Click += new EventHandler(FlipOrientation);
-            CreateButtons();
-            CreateShips();
-            selectingShip();
+            button1.Click += new EventHandler(Button1__Click);
+
         }
 
-        private void FlipOrientation(object sender, EventArgs e)
+        private void Button1__Click(object sender, EventArgs e)
         {
-            orientIsHorizontal = !orientIsHorizontal;
+            StartGame();
         }
 
 
-        private void CreateButtons()
+        private void StartGame()
         {
-            board = new Button[10, 10];
+            player1 = new Player("Player1", new Board("Player1"));
+            player2 = new Player("Player2", new Board("Player2"));
 
-            for (int x = 0; x < 10; x++)
+            player1.Board.Show();
+            player2.Board.Show();
+
+            button1.Enabled = false;
+            button1.Visible = false;
+            label1.Visible = false;
+
+            gameLogRichTextBox.Visible = true;
+
+            Start = new Thread(() =>
             {
-                for (int y = 0; y < 10; y++)
+                do
                 {
-                    board[x, y] = new Button();
-                    board[x, y].BackColor = System.Drawing.Color.White;
-                    board[x, y].Location = new Point(150 + 50*x, 10 + 50*y);
-                    board[x, y].Height = 50;
-                    board[x, y].Width = 50;
-                    board[x, y].Text = x.ToString() + ":" + y.ToString();
-                    board[x, y].Name = x.ToString() + ":" + y.ToString() + "Button";
+                    if (player1.ready == false) CheckBoards(player1);
+                    if (player2.ready == false) CheckBoards(player2);
 
-                    board[x, y].Click += new EventHandler(Tile__Click);
-                    board[x, y].MouseEnter += new EventHandler(Tile__MouseEnter);
-                    board[x, y].MouseLeave += new EventHandler(Tile__MouseLeave);
+                } while (player1.ready == false || player2.ready == false);
 
-                    Controls.Add(board[x, y]);
-                }
-            }
-        }
-
-        private void CreateShips()
-        {
-            ships = new Ship[5];
-            //playerLogRichTextBox.Text = ships.ToString();
-            
-            ships[0] = new Ship(this.carrierButton.Text, 5);
-            ships[1] = new Ship(battleShipButton.Text, 4);
-            ships[2] = new Ship(destroyerButton.Text, 3);
-            ships[3] = new Ship(submarineButton.Text, 3);
-            ships[4] = new Ship(patrolBoatButton.Text, 2);
-        }
-
-        private void Tile__Click(object sender, EventArgs e)
-        {
-            Button butt = (Button)sender;
-
-            butt.BackColor = System.Drawing.Color.Blue;
-            butt.ForeColor = System.Drawing.Color.Green;
-        }
-
-        private void Tile__MouseEnter(object sender, EventArgs e)
-        {
-            Button butt = (Button)sender;
-            if (selectedShip != null)
-            {
-                Button[] place = placingShip(butt);
-                foreach (Button i in place)
+                updateLog("Start Game");
+                do
                 {
-                    i.BackColor = Color.LightBlue;
-                }
-            }
-            else
-            {
-                butt.BackColor = System.Drawing.Color.LightBlue;
-            }
+                    startTurn(player1, player2);
+                    startTurn(player2, player1);
+
+                } while (player1.point < 17 || player2.point < 17);
+
+
+            });
+            Start.IsBackground = true;
+            Start.Start();
         }
 
-        private void Tile__MouseLeave(object sender, EventArgs e)
+        private void CheckBoards(Player player)
         {
-            Button butt = (Button)sender;
-
-            if (selectedShip != null)
+            if (player.Board.ready == true)
             {
-                Button[] place = placingShip(butt);
-                foreach (Button i in place)
-                {
-                    i.BackColor = Color.White;
-                }
-            }
-            else
-            {
-                butt.BackColor = System.Drawing.Color.White;
+                player.ready = true;
+                
+                updateLog(player.Name + " is ready");
+                player.Ships = player.Board.ships;
+                updateLog(player.Ships.ToString());
             }
         }
 
-        private Button[] placingShip(Button butt)
+        private void startTurn(Player player, Player oppPlayer)
         {
-            int size = selectedShip.Size;
-            Button[] place = new Button[size];
+            player.Board.StartTurn();
+            CheckTurn(player, oppPlayer);
+            player.Board.updateButton(false);
+            player.Board.selectedShot = null;
 
-            int x = (butt.Location.X - 150) / 50;
-            int y = (butt.Location.Y - 10) / 50;
-            playerLogRichTextBox.Text += x.ToString() + ":" + y.ToString() + " | ";
+            player.Board.updateLog(player.point.ToString());
 
-            for (int i = 0; i < size; i++)
-            {
-                try
-                {
-                    if (orientIsHorizontal == true) place[i] = board[x + i, y];
-                    else if (orientIsHorizontal == false) place[i] = board[x, y + i];
-                }
-                catch
-                {
-                    int newLength = 0;
-                    if (i == size - 1) newLength = -1;
-                    else newLength = i - size;
-
-                    if (orientIsHorizontal == true) place[i] = board[x + newLength, y];
-                    else if (orientIsHorizontal == false) place[i] = board[x, y + newLength];
-                }
-            }
-
-            return place;
+            updateLog(player.Name + " turn ended");
+            //do
+            //{
+            //} while (player.Board.turn == true);
         }
 
-        private void selectingShip()
+        private void CheckTurn(Player player, Player oppPlayer)
         {
-            carrierButton.Click += new EventHandler(ShipSelect);
-            battleShipButton.Click += new EventHandler(ShipSelect);
-            destroyerButton.Click += new EventHandler(ShipSelect);
-            submarineButton.Click += new EventHandler(ShipSelect);
-            patrolBoatButton.Click += new EventHandler(ShipSelect);
-        }
-
-        private void ShipSelect(object sender, EventArgs e)
-        {
-            Button shipButt = (Button)sender;
-            
-            selectedShip = null;
-            
-            foreach (Ship i in ships)
+            bool pass = false;
+            do
             {
-                if (shipButt.Text == i.ShipName)
+                if (player.Board.selectedShot != null)
                 {
-                    selectedShip = i;
+                    bool checkShot = true;
+
+                    foreach (Button b in player.shots)
+                    {
+                        if (player.Board.selectedShot != b)
+                        {
+                            checkShot = false;
+                            return;
+                        }
+                    }
+
+                    player.Board.updateButton(checkShot);
+                     
+                    if (checkShot == true)
+                    {
+                        pass = true;
+
+
+                        /*
+                        foreach (Ship s in oppPlayer.Ships)
+                        {
+                            foreach (Button b in s.place)
+                            {
+                                if (player.Board.selectedShot == b)
+                                {
+                                    player.Board.updateLog("Hit " + s.ShipName);
+                                    player.point++;
+                                }
+                            }
+                        }*/
+                        /*
+                        for (int i = 0; i < player.shots.Length - 1; i++)
+                        {
+                            if (player.shots[i] == null)
+                            {
+                                player.shots[i] = player.Board.selectedShot;
+                                player.Board.updateLog("Shots taken: " + (i + 1).ToString());
+                                return;
+                            }
+                        }*/
+                    }
                 }
-            }
 
-            if (selectedShip.ShipName == carrierButton.Text) carrierButton.Enabled = false;
-            else carrierButton.Enabled = true;
-            if (selectedShip.ShipName == battleShipButton.Text) battleShipButton.Enabled = false;
-            else battleShipButton.Enabled = true;
-            if (selectedShip.ShipName == destroyerButton.Text) destroyerButton.Enabled = false;
-            else destroyerButton.Enabled = true;
-            if (selectedShip.ShipName == submarineButton.Text) submarineButton.Enabled = false;
-            else submarineButton.Enabled = true;
-            if (selectedShip.ShipName == patrolBoatButton.Text) patrolBoatButton.Enabled = false;
-            else patrolBoatButton.Enabled = true;
-
-            playerLogRichTextBox.Text += "Selected: " +  selectedShip.ShipName + "\n";
+            } while (pass == false);
         }
+
+
+        private void updateLog(string text)
+        {
+            if (gameLogRichTextBox.Text == "") gameLogRichTextBox.AppendText(text);
+            else gameLogRichTextBox.AppendText("\n" + text);
+        }
+    }
+
+    public class Ship
+    {
+        public bool ready = false;
+
+        public Ship(string name, int size, Color color)
+        {
+            this.ShipName = name;
+            this.Size = size;
+            this.Color = color;
+        }
+        private string name;
+        public string ShipName
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        private int size;
+        public int Size
+        {
+            get { return size; }
+            set { size = value; }
+        }
+        private Color color;
+        public Color Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+        public Button[] place = null;
     }
 }

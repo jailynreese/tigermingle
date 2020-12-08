@@ -29,111 +29,64 @@ namespace Battleships
         /// </summary>
         private void InitializeComponent()
         {
-            this.carrierButton = new System.Windows.Forms.Button();
-            this.battleShipButton = new System.Windows.Forms.Button();
-            this.destroyerButton = new System.Windows.Forms.Button();
-            this.submarineButton = new System.Windows.Forms.Button();
-            this.patrolBoatButton = new System.Windows.Forms.Button();
-            this.playerLogRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.flipOrientButton = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gameLogRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // carrierButton
+            // button1
             // 
-            this.carrierButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.carrierButton.Location = new System.Drawing.Point(12, 111);
-            this.carrierButton.Name = "carrierButton";
-            this.carrierButton.Size = new System.Drawing.Size(100, 30);
-            this.carrierButton.TabIndex = 0;
-            this.carrierButton.Text = "Carrier";
-            this.carrierButton.UseVisualStyleBackColor = true;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(64, 110);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(160, 80);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Start";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // battleShipButton
+            // label1
             // 
-            this.battleShipButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.battleShipButton.Location = new System.Drawing.Point(12, 147);
-            this.battleShipButton.Name = "battleShipButton";
-            this.battleShipButton.Size = new System.Drawing.Size(100, 30);
-            this.battleShipButton.TabIndex = 1;
-            this.battleShipButton.Text = "BattleShip";
-            this.battleShipButton.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(57, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 37);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "BattleShips";
             // 
-            // destroyerButton
+            // gameLogRichTextBox
             // 
-            this.destroyerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.destroyerButton.Location = new System.Drawing.Point(12, 183);
-            this.destroyerButton.Name = "destroyerButton";
-            this.destroyerButton.Size = new System.Drawing.Size(100, 30);
-            this.destroyerButton.TabIndex = 2;
-            this.destroyerButton.Text = "Destroyer";
-            this.destroyerButton.UseVisualStyleBackColor = true;
-            // 
-            // submarineButton
-            // 
-            this.submarineButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submarineButton.Location = new System.Drawing.Point(12, 219);
-            this.submarineButton.Name = "submarineButton";
-            this.submarineButton.Size = new System.Drawing.Size(100, 30);
-            this.submarineButton.TabIndex = 3;
-            this.submarineButton.Text = "Submarine";
-            this.submarineButton.UseVisualStyleBackColor = true;
-            // 
-            // patrolBoatButton
-            // 
-            this.patrolBoatButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patrolBoatButton.Location = new System.Drawing.Point(12, 255);
-            this.patrolBoatButton.Name = "patrolBoatButton";
-            this.patrolBoatButton.Size = new System.Drawing.Size(100, 30);
-            this.patrolBoatButton.TabIndex = 4;
-            this.patrolBoatButton.Text = "Patrol Boat";
-            this.patrolBoatButton.UseVisualStyleBackColor = true;
-            // 
-            // playerLogRichTextBox
-            // 
-            this.playerLogRichTextBox.Location = new System.Drawing.Point(12, 517);
-            this.playerLogRichTextBox.Name = "playerLogRichTextBox";
-            this.playerLogRichTextBox.Size = new System.Drawing.Size(776, 69);
-            this.playerLogRichTextBox.TabIndex = 5;
-            this.playerLogRichTextBox.Text = "";
-            // 
-            // flipOrientButton
-            // 
-            this.flipOrientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flipOrientButton.Location = new System.Drawing.Point(12, 12);
-            this.flipOrientButton.Name = "flipOrientButton";
-            this.flipOrientButton.Size = new System.Drawing.Size(100, 30);
-            this.flipOrientButton.TabIndex = 6;
-            this.flipOrientButton.Text = "Flip";
-            this.flipOrientButton.UseVisualStyleBackColor = true;
+            this.gameLogRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gameLogRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.gameLogRichTextBox.Name = "gameLogRichTextBox";
+            this.gameLogRichTextBox.ReadOnly = true;
+            this.gameLogRichTextBox.Size = new System.Drawing.Size(292, 241);
+            this.gameLogRichTextBox.TabIndex = 2;
+            this.gameLogRichTextBox.Text = "";
+            this.gameLogRichTextBox.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(800, 598);
-            this.Controls.Add(this.flipOrientButton);
-            this.Controls.Add(this.playerLogRichTextBox);
-            this.Controls.Add(this.patrolBoatButton);
-            this.Controls.Add(this.submarineButton);
-            this.Controls.Add(this.destroyerButton);
-            this.Controls.Add(this.battleShipButton);
-            this.Controls.Add(this.carrierButton);
+            this.ClientSize = new System.Drawing.Size(292, 241);
+            this.Controls.Add(this.gameLogRichTextBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button carrierButton;
-        private System.Windows.Forms.Button battleShipButton;
-        private System.Windows.Forms.Button destroyerButton;
-        private System.Windows.Forms.Button submarineButton;
-        private System.Windows.Forms.Button patrolBoatButton;
-        private System.Windows.Forms.RichTextBox playerLogRichTextBox;
-        private System.Windows.Forms.Button flipOrientButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox gameLogRichTextBox;
+        private System.Windows.Forms.Timer timer;
     }
 }
-
