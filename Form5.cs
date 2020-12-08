@@ -23,8 +23,6 @@ namespace Dyscord
             InitializeComponent();
             this.Owner = owner;
             this.CenterToParent();
-            this.targetIp = Owner.targetIp;
-            this.targetPort = Owner.targetPort;
 
 
             this.sendButton.Click += new EventHandler(SendButton__Click);
@@ -34,8 +32,8 @@ namespace Dyscord
         {
             this.answer = this.richTextBox1.Text;
 
-            IPAddress iPAddress = IPAddress.Parse(targetIp);
-            IPEndPoint remoteEndPoint = new IPEndPoint(iPAddress, targetPort);
+            IPAddress iPAddress = IPAddress.Parse(((DysordForm)this.Owner).targetIp);
+            IPEndPoint remoteEndPoint = new IPEndPoint(iPAddress, ((DysordForm)this.Owner).targetPort);
 
             Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             server.Connect(remoteEndPoint);
