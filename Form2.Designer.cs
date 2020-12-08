@@ -247,13 +247,13 @@
             // 
             // ticTacToeButton
             // 
-            this.ticTacToeButton.Enabled = false;
             this.ticTacToeButton.Location = new System.Drawing.Point(90, 226);
             this.ticTacToeButton.Name = "ticTacToeButton";
             this.ticTacToeButton.Size = new System.Drawing.Size(75, 23);
             this.ticTacToeButton.TabIndex = 8;
             this.ticTacToeButton.Text = "Tic Tac Toe";
             this.ticTacToeButton.UseVisualStyleBackColor = true;
+            this.ticTacToeButton.Click += new System.EventHandler(this.tttButton_Click);
             // 
             // webBrowser2
             // 

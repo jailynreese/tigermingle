@@ -143,7 +143,7 @@ namespace Dyscord
             this.targetPort = Int32.Parse(ipPort[1]);
             //
             this.targetUser = htmlElement.GetAttribute("name");
-            this.groupBox1.Text = "You've been matched!! ";
+            this.groupBox1.Text = "You've been matched!!";
  
 
         }
@@ -186,6 +186,11 @@ namespace Dyscord
         private void questions20button__Click(object sender, EventArgs e)
         {
             PhraseForm phraseForm = new PhraseForm(this);
+        }
+
+        private void tttButton_Click(object sender, EventArgs e)
+        {
+            Form8 tttForm = new Form8();
         }
     }
 }
