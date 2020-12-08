@@ -8,3 +8,13 @@ C:\Users\Jack\source\repos\github\JackRichards321\myIGME-201\TicTacToe\obj\Debug
 C:\Users\Jack\source\repos\github\JackRichards321\myIGME-201\TicTacToe\obj\Debug\TicTacToe.csproj.CoreCompileInputs.cache
 C:\Users\Jack\source\repos\github\JackRichards321\myIGME-201\TicTacToe\obj\Debug\TicTacToe.exe
 C:\Users\Jack\source\repos\github\JackRichards321\myIGME-201\TicTacToe\obj\Debug\TicTacToe.pdb
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\bin\Debug\TicTacToe.exe.config
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\bin\Debug\TicTacToe.exe
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\bin\Debug\TicTacToe.pdb
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\obj\Debug\TicTacToe.csprojAssemblyReference.cache
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\obj\Debug\TicTacToe.Form1.resources
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\obj\Debug\TicTacToe.Properties.Resources.resources
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\obj\Debug\TicTacToe.csproj.GenerateResource.cache
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\obj\Debug\TicTacToe.csproj.CoreCompileInputs.cache
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\obj\Debug\TicTacToe.exe
+C:\Users\Phillip\Desktop\jailynreese\tigermingle\TicTacToe\obj\Debug\TicTacToe.pdb
